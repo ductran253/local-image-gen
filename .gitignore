@@ -1,0 +1,55 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE / editor configs
+.vscode/
+.idea/
+
+# Distribution / build folders
+dist/
+build/
+*.spec
+
+# Logs, temp, backup files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Executables and compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+*.pyd
+
+# Model checkpoints (optional - if large)
+*.ckpt
+*.safetensors
+
+# Jupyter checkpoints (if used)
+.ipynb_checkpoints/
+
+# PyInstaller cache
+__pyinstaller/
+
+# Installer packages
+*.msi
+*.deb
+*.pkg
+
+# Output folders (optional)
+screenshots/
+output/
