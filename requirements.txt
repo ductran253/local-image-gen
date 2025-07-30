@@ -1,0 +1,7 @@
+torch==2.0.1
+torchvision==0.15.2
+diffusers==0.28.1
+transformers==4.30.2
+safetensors==0.3.2
+accelerate==0.20.3
+pyqt5==5.15.9
