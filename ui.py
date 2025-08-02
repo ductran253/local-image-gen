@@ -6,6 +6,7 @@ import threading
 import os
 import sys
 
+
 if getattr(sys, 'frozen', False):
     backend_path = os.path.join(sys._MEIPASS, 'backend')
 else:
@@ -13,6 +14,7 @@ else:
 sys.path.insert(0, backend_path)
 
 from backend.model import generate_image
+
 
 class DiffusionApp(tk.Tk):
     def __init__(self):
