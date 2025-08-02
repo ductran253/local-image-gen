@@ -2,6 +2,7 @@ from diffusers import AutoPipelineForText2Image
 import torch
 import os
 import sys
+from diffusers import StableDiffusionXLPipeline
 
 torch.backends.cuda.matmul.allow_tf32 = True
 
