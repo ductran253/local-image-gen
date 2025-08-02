@@ -53,3 +53,4 @@ __pyinstaller/
 # Output folders (optional)
 screenshots/
 output/
+model/
