@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import threading
 import os
 import sys
+import transformers
 
 
 if getattr(sys, 'frozen', False):

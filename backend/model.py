@@ -2,6 +2,7 @@ from diffusers import StableDiffusionXLPipeline
 import torch
 import os
 import sys
+import transformers
 
 torch.backends.cuda.matmul.allow_tf32 = True
 
@@ -30,7 +31,9 @@ def load_pipeline():
             use_safetensors=True,
             cache_dir=model_path,
             low_cpu_mem_usage=True,
-            device_map="balanced"
+            device_map="balanced",
+            local_files_only=True
+
         )
         pipeline.enable_vae_tiling()
         pipeline.enable_attention_slicing()
