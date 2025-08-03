@@ -22,6 +22,8 @@ build/
 *.tmp
 *.bak
 *.swp
+*.flag
+
 
 # OS files
 .DS_Store
