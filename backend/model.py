@@ -32,8 +32,6 @@ def load_pipeline():
             low_cpu_mem_usage=True,
             device_map="balanced"
         )
-        pipeline.enable_vae_tiling()
-        pipeline.enable_attention_slicing()
     return pipeline
 
 def generate_image(prompt, output_path="output.png"):
@@ -44,7 +42,8 @@ def generate_image(prompt, output_path="output.png"):
     pipe = load_pipeline()
     
     # Run inference
-    result = pipe(prompt)
+    with torch.no_grad():
+        result = pipe(prompt,guidence_scale=7)
     image = result.images[0]
     image.save(output_path)
 
