@@ -54,3 +54,4 @@ __pyinstaller/
 screenshots/
 output/
 model/
+buildtemp/
