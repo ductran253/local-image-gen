@@ -7,13 +7,21 @@ import os
 import sys
 from io import StringIO
 
+from backend.model import ensure_ml_packages
+
 if getattr(sys, 'frozen', False):
     backend_path = os.path.join(sys._MEIPASS, 'backend')
 else:
     backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "backend"))
 sys.path.insert(0, backend_path)
 
+if getattr(sys, 'frozen', False):
+    base_path = os.path.dirname(sys.executable)
+else:
+    base_path = os.path.dirname(os.path.abspath(__file__))
 
+# This file will indicate that installation is done
+install_flag = os.path.join(base_path, "installed.flag")
 
 class InstallationWindow(tk.Tk):
     def __init__(self):
@@ -231,7 +239,24 @@ class DiffusionApp(tk.Tk):
            
             self.after(0, update_error)
 
+
 if __name__ == "__main__":
-    # Start with the installation window instead of main app
-    installer = InstallationWindow()
-    installer.mainloop()
+    install_flag = os.path.join(os.path.dirname(sys.executable if getattr(sys, 'frozen', False) else __file__), "installed.flag")
+
+    if not os.path.exists(install_flag):
+        def run_main_app_after_install():
+            with open(install_flag, "w") as f:
+                f.write("installed")
+            app = DiffusionApp()
+            app.mainloop()
+
+        # Add this hook into the installer
+        InstallationWindow.start_main_app = staticmethod(run_main_app_after_install)
+
+        # Launch installer
+        installer = InstallationWindow()
+        installer.mainloop()
+    else:
+        ensure_ml_packages()
+        app = DiffusionApp()
+        app.mainloop()
