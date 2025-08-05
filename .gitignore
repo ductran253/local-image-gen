@@ -57,3 +57,5 @@ screenshots/
 output/
 model/
 buildtemp/
+/venv310/
+output.png
